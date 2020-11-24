@@ -1,0 +1,87 @@
+
+<div>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+     
+        <div class="modal-header">
+          <h4 class="modal-title">Add List</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input class="form-control" name="name" [(ngModel)]='name' />
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='addList()'>Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="innerModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        
+        <div class="modal-header">
+          <h4 class="modal-title">Add Data to Card</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+       
+        <div class="modal-body">
+          <input class="form-control" name="dataInCard" [(ngModel)]='dataInCard' />
+        </div>
+
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='addCard()'>Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="heading"><h3 class="title">TODO Application</h3></div>
+  <div class="container">
+  
+    <button class="btn btn-primary list"  data-toggle="modal" data-target="#myModal" >+ Add List</button>
+  <div class="row cards-grp " cdkDropListGroup>
+    <div class="col-md-4 border1 " *ngFor='let list of listData; let i=index'>
+      <p style="float:right;font-size:20px;">&times;</p>
+      <div class="card m-3 ">
+        
+        <h4>{{change(list.name)}}</h4>
+        <div cdkDropList [cdkDropListData]="list.data" 
+           (cdkDropListDropped)="drop($event,i)">
+
+          <div *ngFor='let data of list.data; let ind = index' cdkDrag>
+            <div class="card">
+              <h6>{{data}}</h6> 
+              <button (click)='delete(ind, i);'><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary mt-3" data-toggle="modal" data-target="#innerModal" (click)='addCardAtIndex(i)'>+ Add
+          Card</button>
+
+
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<router-outlet></router-outlet>

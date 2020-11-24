@@ -1,0 +1,26 @@
+.border1{
+    border: 1px solid black;
+    height:auto;
+    width:100%;
+}
+.list{
+    float: right;
+    margin:20px auto;
+}
+.cards-grp {
+    padding-top:100px;
+    /* border:1px solid black */
+}
+h4,h6 {
+    margin: 10px auto
+}
+.heading {
+    background-color:#007bff;
+    height:50px;
+}
+.title {
+    padding: 8px;
+    text-align: center;
+    color:white;
+}
+
